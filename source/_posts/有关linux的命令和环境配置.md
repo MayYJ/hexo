@@ -20,7 +20,11 @@ solution：sudo apt-get install python-software-properties
 ##### 设置命令的快捷方式
 
 - vim ~/.bashrc设置别名
-- alias ll='ls -alF'
+
+- alias ll='ls -al'
+
+  如果要执行多条命令中间用分好分隔就行
+
 - source ~/.bashrc
 
 ---
@@ -120,13 +124,52 @@ Comment=XX-Net
 - ps x 显示所有程序，不以终端机来区分。
 
 **最常用的方法是ps aux,然后再通过管道使用grep命令过滤查找特定的进程,然后再对特定的进程进行操作。**
-**ps aux | grep program_filter_word,ps -ef |grep tomcat**
-
-
+**ps aux | grep program_filter_word,ps -ef |grep tomc**
 
 ---
 
+###### 杀死进程
 
+- 通过PID杀死进程
+
+  ```
+  kill PID
+  ```
+
+- 通过进程名称杀死进程
+
+  ```
+  killall NAME
+  ```
+
+  ​
+
+##### 网络相关指令
+
+###### netstat
+
+- Netstat 命令用于显示各种网络相关信息，如网络连接，路由表，接口状态 (Interface Statistics)，masquerade 连接，多播成员 (Multicast Memberships) 等等。
+
+- 相关参数
+
+  - a (all)显示所有选项，默认不显示LISTEN相关
+  - t (tcp)仅显示tcp相关选项
+  - u (udp)仅显示udp相关选项
+  - n 拒绝显示别名，能显示数字的全部转化成数字。
+  - l 仅列出有在 Listen (监听) 的服務状态
+  - p 显示建立相关链接的程序名
+  - r 显示路由信息，路由表
+  - e 显示扩展信息，例如uid等
+  - s 按各个协议进行统计
+  - c 每隔一个固定时间，执行该netstat命令。
+
+  **提示：LISTEN和LISTENING的状态只有用-a或者-l才能看到**
+
+###### 查看指定端口号的进程
+
+```
+# netstat -an | grep ':80'
+```
 
 
 
