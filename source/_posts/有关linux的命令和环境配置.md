@@ -171,5 +171,13 @@ Comment=XX-Net
 # netstat -an | grep ':80'
 ```
 
+---
 
+##### 安装deb包
+
+- 下面是一个例子：
+
+```
+sudo dpkg -i Appifier_9.6.2_amd64.deb
+```
 
