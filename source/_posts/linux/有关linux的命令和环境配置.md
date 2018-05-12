@@ -277,3 +277,53 @@ gzip *% 把当前目录下的每个文件压缩成 .gz 文件。gzip -dv *% 把�
 ###### 使用关键字查询
 
 使用‘/’加你要查询的内容
+
+##### Center OS7
+
+1. center os7安装后默认是安装了并启用了firewalld防火墙
+
+2. 所以以下是一些命令操作该防火墙基本命令，有其它需求自行在网上搜索
+
+   ```
+   启动防火墙
+   systemctl start firewalld 
+   禁用防火墙
+   systemctl stop firewalld
+   设置开机启动
+   systemctl enable firewalld
+   停止并禁用开机启动
+   sytemctl disable firewalld
+   重启防火墙
+   firewall-cmd --reload	
+   查看状态
+   systemctl status firewalld或者 firewall-cmd --state
+   ```
+
+
+##### ubuntu下快速构建java 环境
+
+1. 安装jre
+
+   ```
+   sudo apt-get install default-jre
+   ```
+
+2. 安装jdk
+
+   ```
+   sudo apt-get install default-jdk
+   ```
+
+3. 下面是全面的安装
+
+   ```
+   sudo add-apt-repository ppa:webupd8team/java 
+
+   sudo apt-get update 
+
+   sudo apt-get install oracle-java8-installer 
+
+   sudo apt-get install oracle-java8-set-default
+   ```
+
+   ​

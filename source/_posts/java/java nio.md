@@ -456,7 +456,9 @@ public class SelectSocketsThreadPool extends SelectSockets
 }
 ```
 
+##### 需要注意的问题
 
+1. 当客户端关闭的时候，服务器还是会收到channel的读事件，但是数目为0，而且会读到-1，其实-1在网络io中就是socket关闭的含义，在文件时末尾的含义，所以为了避免客户端关闭服务端一直收到读事件，必须检测上一次的读是不是-1，如果是-1，就关闭这个channel。
 
 ##### 参考
 

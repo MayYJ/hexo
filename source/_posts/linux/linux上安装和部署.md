@@ -5,6 +5,8 @@ tags: redis
 categories: linux
 ---
 
+#### redis的安装和部署
+
 1.基础知识
  redis是用C语言开发的一个开源的高性能键值对（key-value）数据库。它通过提供多种键值数据类型来适应不同场景下的存储需求，目前为止redis支持的键值数据类型如下
 字符串、列表（lists）、集合（sets）、有序集合（sorts sets）、哈希表（hashs）
@@ -149,3 +151,51 @@ vim /etc/rc.local
 ```
 
 至此redis已经全部安装完，后面我会分享redis.conf 详细配置以及说明。
+
+#### jekins的安装
+
+##### 下载程序包
+
+````
+wget http://mirrors.jenkins.io/war/latest/jenkins.war
+````
+
+##### 启动程序包
+
+```
+java -jarjenkins.war --httpPort=8081
+```
+
+这里就相当于运行java程序，并且设置端口号为8081
+
+当运行成功后就可以 使用浏览器进行访问
+
+至于具体使用和配置可以参数 [这个链接](https://www.jianshu.com/p/36912a2bbaf9)。
+
+#### ssr的搭建
+
+下载安装ssr程序安装程序
+
+```
+wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh && chmod +x ssr.sh && bash ssr.sh
+```
+
+然后按照安装程序走就行
+
+如果希望查看ssr信息使用下面的命令
+
+````
+bash ssr.sh
+````
+
+使用BBR加速
+
+```
+wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh
+
+chmod +x bbr.sh
+
+./bbr.sh
+```
+
+lsmod | grep bbr 如果出现tcp_bbr字样表示bbr已安装并启动成功
