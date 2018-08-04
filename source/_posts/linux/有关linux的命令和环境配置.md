@@ -33,6 +33,12 @@ solution：sudo apt-get install python-software-properties
 
 - 首先下载jdk
 
+  在linux下通过wget下载 命令示例：
+
+  ```
+  wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-linux-x64.tar.gz
+  ```
+
 - sudo tar zxvf  ./{jdk文件} -C  /usr/lib
 
 - cd /usr/lib
@@ -169,6 +175,12 @@ Comment=XX-Net
 
 ```
 # netstat -an | grep ':80'
+```
+
+###### 杀死指定端口号的所有进程
+
+```
+kill -9 $(sudo lsof -i tcp:进程号 -t)
 ```
 
 ---
@@ -326,4 +338,4 @@ gzip *% 把当前目录下的每个文件压缩成 .gz 文件。gzip -dv *% 把�
    sudo apt-get install oracle-java8-set-default
    ```
 
-   ​
+   ​	

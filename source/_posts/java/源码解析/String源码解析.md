@@ -23,7 +23,7 @@ private final byte[] value;
 
 ```
 private final byte coder;
-static final boolean COMPACT_STRINGS = true;
+static	 final boolean COMPACT_STRINGS = true;
 static final byte LATIN1 = 0;
 static final byte UTF16 = 1;
 ```
