@@ -160,6 +160,38 @@ vim /etc/rc.local
 
 至此redis已经全部安装完，后面我会分享redis.conf 详细配置以及说明。
 
+- 安装redis的一些问题
+
+  1. 若出现如下提示，则说明未安装gcc，使用命令安装gcc：apt-get install gcc 
+
+  ```
+  [root@localhost redis-2.8.17]# make
+  cd src && make
+  allmake[1]: Entering directory `/root/redis-2.8.17/src‘
+  CC adlist.o
+  /bin/sh:cc: command not found
+  make[1]: *** [adlist.o] Error127
+  make[1]: Leaving directory `/root/redis-2.8.17/src‘
+  make: *** [all] Error2
+  ```
+
+  2. 若出现如下提示，则将make改为make MALLOC=libc，推测是因为编译库的问题。 
+
+  ```
+[root@localhost redis-2.8.17]#make
+cd src && make all
+make[1]: Entering directory `/root/redis-2.8.17/src‘
+CC adlist.o
+In file included from adlist.c:34:0:
+zmalloc.h:50:31: error: jemalloc/jemalloc.h: No suchfileor directory
+zmalloc.h:55:2: error:#error"Newer version of jemalloc required"
+make[1]: *** [adlist.o] Error1
+make[1]: Leaving directory `/root/redis-2.8.17/src‘
+make: *** [all] Error2
+  ```
+
+​     
+
 #### jekins的安装
 
 ##### 下载程序包

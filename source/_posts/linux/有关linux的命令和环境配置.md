@@ -290,6 +290,93 @@ gzip *% 把当前目录下的每个文件压缩成 .gz 文件。gzip -dv *% 把�
 
 使用‘/’加你要查询的内容
 
+###### 替换
+
+**需要注意的是如果是url可以将下面的'/'换成'#'**
+
+`:s`（substitute）命令用来查找和替换字符串。语法如下：
+
+```
+:{作用范围}s/{目标}/{替换}/{替换标志}
+```
+
+例如`:%s/foo/bar/g`会在全局范围(`%`)查找`foo`并替换为`bar`，所有出现都会被替换（`g`）。
+
+- 作用范围
+
+作用范围分为当前行、全文、选区等等。
+
+当前行：
+
+```
+:s/foo/bar/g
+```
+
+全文：
+
+```
+:%s/foo/bar/g
+```
+
+选区，在Visual模式下选择区域后输入`:`，Vim即可自动补全为 `:'<,'>`。
+
+```
+:'<,'>s/foo/bar/g
+```
+
+2-11行：
+
+```
+:5,12s/foo/bar/g
+```
+
+当前行`.`与接下来两行`+2`：
+
+```
+:.,+2s/foo/bar/g
+```
+
+- 替换标志
+
+上文中命令结尾的`g`即是替换标志之一，表示全局`global`替换（即替换目标的所有出现）。 还有很多其他有用的替换标志：
+
+空替换标志表示只替换从光标位置开始，目标的第一次出现：
+
+```
+:%s/foo/bar
+```
+
+`i`表示大小写不敏感查找，`I`表示大小写敏感：
+
+```
+:%s/foo/bar/i
+# 等效于模式中的\c（不敏感）或\C（敏感）
+:%s/foo\c/bar
+```
+
+`c`表示需要确认，例如全局查找`"foo"`替换为`"bar"`并且需要确认：
+
+```
+:%s/foo/bar/gc
+```
+
+回车后Vim会将光标移动到每一次`"foo"`出现的位置，并提示
+
+```
+replace with bar (y/n/a/q/l/^E/^Y)?
+```
+
+按下`y`表示替换，`n`表示不替换，`a`表示替换所有，`q`表示退出查找模式， `l`表示替换当前位置并退出。`^E`与`^Y`是光标移动快捷键，参考： [Vim中如何快速进行光标移动](https://harttle.land/2015/11/07/vim-cursor.html)。
+
+###### 一些插件使用技巧
+
+- NERDTree
+
+  Control + W 跳转窗格 然后使用上下作用控制游标
+
+  sp可以将当前窗格进行划分
+
+
 ##### Center OS7
 
 1. center os7安装后默认是安装了并启用了firewalld防火墙
@@ -330,12 +417,34 @@ gzip *% 把当前目录下的每个文件压缩成 .gz 文件。gzip -dv *% 把�
 
    ```
    sudo add-apt-repository ppa:webupd8team/java 
-
+   
    sudo apt-get update 
-
+   
    sudo apt-get install oracle-java8-installer 
-
+   
    sudo apt-get install oracle-java8-set-default
    ```
 
-   ​	
+
+###### 关闭ubutnu下面的哔哔声
+
+- ```shell
+  sudo echo "blacklist pcspkr" >> /etc/modprobe.d/blacklist
+  //或者直接通过sudo su进入root
+  //然后执行 echo "blacklist pcspkr" >> /etc/modprobe.d/blacklist
+  //然后 重启电脑
+  ```
+
+- 关闭vim的哔哔声
+
+  ```
+  set vb t_vb=
+  ```
+
+
+##### Centos 防火墙
+
+firewalld 
+
+https://www.jianshu.com/p/bad33004bb4f
+
